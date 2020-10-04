@@ -48,11 +48,13 @@ client.once('ready', () => {
 client.on('message', message =>{
     if(message.content === `${prefix}핑`) {
         message.channel.send("ping...").then((sentMessage) => sentMessage.edit(`Pong! Ponged back the ping in ${Math.round(client.ws.ping)} milliseconds!`))
+        console.log(`${message.author.tag} 가 (핑) 명령을 사용했어!`)
     }
 })
 client.on('message', message =>{
     if(message.content === `${prefix}초대`) {
         message.reply('https://discord.com/api/oauth2/authorize?client_id=758100455849984030&permissions=8&scope=bot')
+        console.log(`${message.author.tag} 가 (초대) 명령을 사용했어!`)
     }
 })
 client.on('message', message =>{
@@ -67,40 +69,39 @@ client.on('message', message =>{
 	
 	
 message.channel.send(Embed);
+console.log(`${message.author.tag} 가 (주사위) 명령을 사용했어!`)
     }
 })
 client.on('message', message => {
     if (message.content.startsWith(`양파야 삭제`)) {
           if(!(message.member.hasPermission("ADMINISTRATOR"))){
      return message.reply('관리자 권한이 없습니다.').then(m => m.delete(5000));
+     console.log(`${message.author.tag} 가 (삭제) 명령을 사용하려다 (관리자 권한부족)으로 실패했어!`)
 } 
+
         const args = message.content.split(" ");
-        if(message.member.hasPermission("ADMINISTRATOR")) {
-        if (args[2] === '랜덤') {
-            let a = Math.round(Math.random()) * 10 + 1
-            message.channel.bulkDelete(a + 1, true)
-            message.reply(`(랜덤) ${a}개의 메시지가 삭제되었습니다.`)
-        } else {
 
-
-            if (args[2] === isNaN) {
+            if (isNaN(args[2])) {
                 message.reply('삭제할 메시지의 양을 적어주세요')
+                console.log(`${message.author.tag} 가 (삭제) 명령을 사용하려다 (올바르지 않은 삭제할 양)으로 실패했어!`)
             } else {
                 args[2] *= 1;
                 if (args[2] > 99 || args[2] < 1) {
                     message.reply('메시지는 1이상이거나 99이하여야 합니다.')
+                    console.log(`${message.author.tag} 가 (삭제) 명령을 사용하려다 (올바르지 않은 삭제할 양)으로 실패했어!`)
                 } else {
                     message.channel.bulkDelete(args[2] + 1, true)
                     message.reply(`${args[2]}개의 메시지를 삭제하였습니다.`)
+                    console.log(`${message.author.tag} 가 (삭제) 명령을 사용했어!`)
                 }
 
             }
 
         }
-    
+       
   }
-}
-});
+
+);
 client.on('message', message =>{
 
     if(message.content === `${prefix}픽셀아트 흠터레스팅`) {
@@ -109,6 +110,7 @@ client.on('message', message =>{
         .setDescription(`${arts.thinking}`)
         .setTimestamp()
         message.channel.send(Embed)
+        console.log(`${message.author.tag} 가 (픽셀아트 흠터레스팅) 명령을 사용했어!`)
     
     }
     else if(message.content === `${prefix}픽셀아트 엄준식`) {
@@ -117,6 +119,58 @@ client.on('message', message =>{
         .setDescription(`${arts.umjunsik}`)
         .setTimestamp()
         message.channel.send(Embed)
+        console.log(`${message.author.tag} 가 (픽셀아트 엄준식) 명령을 사용했어!`)
     }
 })
-client.login('token')
+client.on('message', message =>{
+    message.member = '<@758100455849984030>'
+    if(message.content === 'test') {
+       if(message.member.hasPermission("ADMINISTRATOR")) {
+            message.reply('관리자 권한잇음.')
+       }
+       else {
+           message.reply('관리자 권한없음.');
+       }
+    }
+    
+})
+client.on('message', message => {
+    if(message.content === '양파야 도움') {
+        message.reply('현재 개발중입니다..')
+    }
+})
+client.on('message', message => {
+    if(message.content === 'test') {
+
+        message.react('✂').then(() => message.react('✊').then(() => message.react('✋')));
+       
+       
+
+const filter = (reaction, user) => {
+	return ['✂', '✊', '✋'].includes(reaction.emoji.name) && user.id === message.author.id;
+};
+
+message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+	.then(collected => {
+		const reaction = collected.first();
+
+		if (reaction.emoji.name === '✂') {
+            a = 0
+			message.reply(`test, ${a}`)
+        } 
+        else if(reaction.emoji.name === '✊') {
+            a = 1
+			message.reply(`test, ${a}`);
+        }
+        else if(reaction.emoji.name === '✋') {
+            a = 2
+            message.reply(`test, ${a}`)
+        }
+	})
+	.catch(collected => {
+		message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
+	});
+    }
+})
+
+client.login('token');
