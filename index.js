@@ -122,6 +122,7 @@ client.on('message', message =>{
         console.log(`${message.author.tag} 가 (픽셀아트 엄준식) 명령을 사용했어!`)
     }
 })
+/*
 client.on('message', message =>{
     message.member = '<@758100455849984030>'
     if(message.content === 'test') {
@@ -134,17 +135,19 @@ client.on('message', message =>{
     }
     
 })
+*/
 client.on('message', message => {
     if(message.content === '양파야 도움') {
         message.reply('현재 개발중입니다..')
     }
 })
 client.on('message', message => {
-    if(message.content === 'test') {
+    if(message.content === '양파야 가위바위보'){
 
         message.react('✂').then(() => message.react('✊').then(() => message.react('✋')));
-       
-       
+    
+       let bots =Math.floor( Math.random()) * 3
+        console.log(bots)
 
 const filter = (reaction, user) => {
 	return ['✂', '✊', '✋'].includes(reaction.emoji.name) && user.id === message.author.id;
@@ -156,20 +159,19 @@ message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 
 		if (reaction.emoji.name === '✂') {
             a = 0
-			message.reply(`test, ${a}`)
+            console.log(a)
         } 
         else if(reaction.emoji.name === '✊') {
             a = 1
-			message.reply(`test, ${a}`);
+             console.log(a)
         }
         else if(reaction.emoji.name === '✋') {
-            a = 2
-            message.reply(`test, ${a}`)
+            a = 2 
+             console.log(a)  
+            
         }
 	})
-	.catch(collected => {
-		message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
-	});
+	
     }
 })
 
