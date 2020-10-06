@@ -37,6 +37,21 @@ const arts = {
     ⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁
     ⠀⠀⠛⢿⣿⣿⣿⣿⣿⣿⡿⠟
     ⠀⠀⠀⠀⠀⠉⠉⠉`,
+    'pepe' : `⠄⠄⠄⠄⠄⠄⢀⣠⣤⣶⣶⣶⣤⣄⠄⠄⢀⣠⣤⣤⣤⣤⣀⠄⠄⠄⠄⠄⠄⠄ ⠄⠄⠄⠄
+                    ⢠⣾⣿⣿⣿⣿⠿⠿⢿⣿⣿⡆⣿⣿⣿⣿⣿⣿⣿⣷⡄⠄⠄⠄⠄⠄ ⠄⠄⠄
+                    ⣴⣿⣿⡟⣩⣵⣶⣾⣿⣷⣶⣮⣅⢛⣫⣭⣭⣭⣭⣭⣭⣛⣂⠄⠄⠄⠄ ⠄⠄
+                    ⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣭⠛⣿⣿⣿⣿⣿⣿⣿⣿⣦⡀⠄ 
+                ⣠⡄⣿⣿⣿⣿⣿⣿⣿⠿⢟⣛⣫⣭⠉⠍⠉⣛⠿⡘⣿⠿⢟⣛⡛⠉⠙⠻⢿⡄ 
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣶⣶⣶⣶⣶⣶⣶⣭⣍⠄⣡⣬⣭⣭⣅⣈⣀⣉⣁⠄ 
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣶⣭⣛⡻⠿⠿⢿⣿⡿⢛⣥⣾⣿⣿⣿⣿⣿⣿⣿⠿⠋⠄ 
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⣩⣵⣾⣿⣿⣯⣙⠟⣋⣉⣩⣍⡁⠄⠄⠄ 
+                ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣷⡄⠄⠄ 
+                ⣿⣿⣿⣿⣿⣿⡿⢟⣛⣛⣛⣛⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⡀⠄ 
+                ⣿⣿⣿⣿⣿⡟⢼⣿⣯⣭⣛⣛⣛⡻⠷⠶⢶⣬⣭⣭⣭⡭⠭⢉⡄⠶⠾⠟⠁⠄ 
+                ⣿⣿⣿⣿⣟⠻⣦⣤⣭⣭⣭⣭⣛⣛⡻⠿⠷⠶⢶⣶⠞⣼⡟⡸⣸⡸⠿⠄⠄⠄ 
+                ⣛⠿⢿⣿⣿⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠷⡆⣾⠟⡴⣱⢏⡜⠆⠄⠄⠄ 
+                ⣭⣙⡒⠦⠭⣭⣛⣛⣛⡻⠿⠿⠟⣛⣛⣛⣛⡋⣶⡜⣟⣸⣠⡿⣸⠇⣧⡀⠄⠄ 
+                ⣿⣿⣿⣿⣷⣶⣦⣭⣭⣭⣭⣭⣭⣥⣶⣶⣶⡆⣿⣾⣿⣿⣿⣷⣿⣸⠉⣷⠄⠄`,
     
  }
 
@@ -73,7 +88,7 @@ console.log(`${message.author.tag} 가 (주사위) 명령을 사용했어!`)
     }
 })
 client.on('message', message => {
-    if (message.content.startsWith(`양파야 삭제`)) {
+    if (message.content.startsWith(`${prefix}삭제`)) {
           if(!(message.member.hasPermission("ADMINISTRATOR"))){
      return message.reply('관리자 권한이 없습니다.').then(m => m.delete(5000));
      console.log(`${message.author.tag} 가 (삭제) 명령을 사용하려다 (관리자 권한부족)으로 실패했어!`)
@@ -104,25 +119,31 @@ client.on('message', message => {
 );
 client.on('message', message =>{
 
-    if(message.content === `${prefix}픽셀아트 흠터레스팅`) {
+    if(message.content === `${prefix}아스키아트 흠터레스팅`) {
         const Embed = new Discord.MessageEmbed()
         
         .setDescription(`${arts.thinking}`)
         .setTimestamp()
         message.channel.send(Embed)
-        console.log(`${message.author.tag} 가 (픽셀아트 흠터레스팅) 명령을 사용했어!`)
+        console.log(`${message.author.tag} 가 (아스키아트 흠터레스팅) 명령을 사용했어!`)
     
     }
-    else if(message.content === `${prefix}픽셀아트 엄준식`) {
+    else if(message.content === `${prefix}아스키아트 엄준식`) {
         const Embed = new Discord.MessageEmbed()
         
         .setDescription(`${arts.umjunsik}`)
         .setTimestamp()
         message.channel.send(Embed)
-        console.log(`${message.author.tag} 가 (픽셀아트 엄준식) 명령을 사용했어!`)
+        console.log(`${message.author.tag} 가 (아스키아트 엄준식) 명령을 사용했어!`)
+    }
+    else if(message.content === `${prefix}아스키아트 페페`) {
+        const Embed = new Discord.MessageEmbed()
+        .setDescription(`${arts.pepe}`)
+        .setTimestamp()
+        message.channel.send(Embed)
+        console.log(`${message.author.tag} 가 (아스키아트 페페) 명령을 사용했어!`)
     }
 })
-/*
 client.on('message', message =>{
     message.member = '<@758100455849984030>'
     if(message.content === 'test') {
@@ -135,18 +156,22 @@ client.on('message', message =>{
     }
     
 })
-*/
 client.on('message', message => {
-    if(message.content === '양파야 도움') {
+    if(message.content === `${prefix}도움`) {
         message.reply('현재 개발중입니다..')
     }
 })
 client.on('message', message => {
-    if(message.content === '양파야 가위바위보'){
+    if(message.content === `${prefix}가위바위보`){
+        const Embed = new Discord.MessageEmbed()
+	.setColor('#0099ff')
+    .setDescription('이모지 하나를 선택해주세요.')
+	.setTimestamp()
+	
 
-        message.react('✂').then(() => message.react('✊').then(() => message.react('✋')));
+message.channel.send(Embed).then(() => message.react('✂').then(() => message.react('✊').then(() => message.react('✋'))));
     
-       let bots =Math.floor( Math.random()) * 3
+       let bots = Math.floor(Math.random() * 3)
         console.log(bots)
 
 const filter = (reaction, user) => {
@@ -159,20 +184,121 @@ message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 
 		if (reaction.emoji.name === '✂') {
             a = 0
-            console.log(a)
+            
         } 
         else if(reaction.emoji.name === '✊') {
             a = 1
-             console.log(a)
+            
         }
         else if(reaction.emoji.name === '✋') {
             a = 2 
-             console.log(a)  
+             
             
         }
+        console.log(a)
+        let embed = new Discord.MessageEmbed()
+        if(a === bots) {
+
+           if(a == 0) {
+               embed
+               .addFields(
+                   {name: '결과는?', value: '나 : ✂  vs   ✂ : 봇'},
+                   {name: 'ㅤ', value: '비겼네요.'}
+               )
+               .setFooter(`${message.author.username}님과의 놀이`)
+               .setTimestamp()
+               message.channel.send(embed)
+
+               
+           }
+           else if(a == 1) {
+            embed
+            .addFields(
+                {name: '결과는?', value: '나 : ✊  vs   ✊ : 봇'},
+                {name: 'ㅤ', value: '비겼네요.'}
+            )
+            .setFooter(`${message.author.username}님과의 놀이`)
+            .setTimestamp()
+            message.channel.send(embed)
+           }
+           else if(a == 2) {
+            embed
+            .addFields(
+                {name: '결과는?', value: '나 : ✋  vs   ✋ : 봇'},
+                {name: 'ㅤ', value: '비겼네요.'}
+            )
+            .setFooter(`${message.author.username}님과의 놀이`)
+            .setTimestamp()
+            message.channel.send(embed)
+           }
+        }
+        else if(a === 0 && bots === 1) {
+            embed
+            .addFields(
+                {name: '결과는?', value: '나 : ✂  vs   ✊ : 봇'},
+                {name: 'ㅤ', value: '제가 이겼네요.'}
+            )
+            .setFooter(`${message.author.username}님과의 놀이`)
+            .setTimestamp()
+            message.channel.send(embed)
+        }
+        else if(a === 1 && bots === 2) {
+            embed
+               .addFields(
+                   {name: '결과는?', value: '나 : ✊  vs   ✋ : 봇'},
+                   {name: 'ㅤ', value: '제가 이겼네요.'}
+               )
+               .setFooter(`${message.author.username}님과의 놀이`)
+               .setTimestamp()
+               message.channel.send(embed)
+        }
+        else if(a === 2 && bots === 0) {
+            embed
+               .addFields(
+                   {name: '결과는?', value: '나 : ✋  vs   ✂ : 봇'},
+                   {name: 'ㅤ', value: '제가 이겼네요.'}
+               )
+               .setFooter(`${message.author.username}님과의 놀이`)
+               .setTimestamp()
+               message.channel.send(embed)
+        }
+        else if(a === 0 && bots === 2 ) {
+            embed
+            .addFields(
+                {name: '결과는?', value: '나 : ✂  vs   ✋ : 봇'},
+                {name: 'ㅤ', value: '제가 졌네요.'}
+            )
+            .setFooter(`${message.author.username}님과의 놀이`)
+            .setTimestamp()
+            message.channel.send(embed)
+        }
+        else if(a === 1 && bots === 0) {
+            embed
+            .addFields(
+                {name: '결과는?', value: '나 : ✊  vs   ✂ : 봇'},
+                {name: 'ㅤ', value: '제가 졌네요.'}
+            )
+            .setFooter(`${message.author.username}님과의 놀이`)
+            .setTimestamp()
+            message.channel.send(embed)
+        }
+        else if(a === 2 && bots === 1) {
+            embed
+               .addFields(
+                   {name: '결과는?', value: '나 : ✋  vs   ✊ : 봇'},
+                   {name: 'ㅤ', value: '제가 졌네요.'}
+               )
+               .setFooter(`${message.author.username}님과의 놀이`)
+               .setTimestamp()
+               message.channel.send(embed)
+        }
+        
 	})
 	
     }
+    
 })
 
-client.login('token');
+
+	
+client.login('NzU4MTAwNDU1ODQ5OTg0MDMw.X2qCEQ.zuhFuxC8wunhD6AbChBvYxWFJ-0');
