@@ -301,4 +301,4 @@ message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
 
 
 	
-client.login('NzU4MTAwNDU1ODQ5OTg0MDMw.X2qCEQ.zuhFuxC8wunhD6AbChBvYxWFJ-0');
+client.login('token');
